@@ -1,0 +1,368 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Modulos",
+    "version": "1.0.0",
+    "description": "Documentación de la API de Cursos y Usuarios"
+  },
+  "paths": {
+    "/api/cursos": {
+      "get": {
+        "summary": "Obtener lista de cursos",
+        "responses": {
+          "200": {
+            "description": "Lista obtenida correctamente",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id_curso": 1,
+                    "nombre": "Node.js Básico",
+                    "descripcion": "Curso introductorio",
+                    "duracion": "40 horas"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear un nuevo curso",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nombre": "Node.js Avanzado",
+                "descripcion": "Arquitectura y buenas prácticas",
+                "duracion": "60 horas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Curso creado exitosamente",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id_curso": 2,
+                  "nombre": "Node.js Avanzado",
+                  "descripcion": "Arquitectura y buenas prácticas",
+                  "duracion": "60 horas"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cursos/{id}": {
+      "put": {
+        "summary": "Actualizar un curso existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del curso a actualizar",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nombre": "Node.js y Express Actualizado",
+                "descripcion": "Contenido renovado",
+                "duracion": "50 horas"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Curso actualizado exitosamente",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensaje": "Curso actualizado correctamente"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Curso no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar un curso",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del curso a eliminar",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Curso eliminado exitosamente",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensaje": "Curso eliminado correctamente"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Curso no encontrado"
+          }
+        }
+      }
+    },
+    "/api/usuarios": {
+      "get": {
+        "summary": "Obtener lista de usuarios",
+        "responses": {
+          "200": {
+            "description": "Lista obtenida correctamente",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id_usuario": 1,
+                    "correo": "usuario@ejemplo.com",
+                    "nombre": "Juan",
+                    "apellido": "Perez",
+                    "contrasena": "123456"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear un nuevo usuario",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "correo": "nuevo@ejemplo.com",
+                "nombre": "Maria",
+                "apellido": "Lopez",
+                "contrasena": "secreta123"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuario creado exitosamente",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id_usuario": 2,
+                  "correo": "nuevo@ejemplo.com",
+                  "nombre": "Maria",
+                  "apellido": "Lopez",
+                  "contrasena": "secreta123"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/usuarios/{id}": {
+      "put": {
+        "summary": "Actualizar un usuario existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del usuario a actualizar",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nombre": "Maria Actualizada",
+                "apellido": "Lopez Modificada"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuario actualizado exitosamente",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensaje": "Usuario actualizado correctamente"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar un usuario",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID del usuario a eliminar",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario eliminado exitosamente",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensaje": "Usuario eliminado correctamente"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Curso": {
+        "type": "object",
+        "properties": {
+          "id_curso": {
+            "type": "integer",
+            "description": "ID del curso (Clave primaria)"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "duracion": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "nombre",
+          "descripcion",
+          "duracion"
+        ]
+      },
+      "Matricula": {
+        "type": "object",
+        "properties": {
+          "id_matricula": {
+            "type": "integer",
+            "description": "ID de la matrícula (Clave primaria)"
+          },
+          "id_usuario": {
+            "type": "integer",
+            "description": "ID del usuario (Clave foránea)"
+          },
+          "id_curso": {
+            "type": "integer",
+            "description": "ID del curso (Clave foránea)"
+          },
+          "fecha_inicio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fecha_fin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "fecha_inicio",
+          "fecha_fin"
+        ]
+      },
+      "Usuarios": {
+        "type": "object",
+        "properties": {
+          "id_usuario": {
+            "type": "integer",
+            "description": "ID del usuario (Clave primaria)"
+          },
+          "correo": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "contrasena": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id_usuario",
+          "correo",
+          "nombre",
+          "apellido",
+          "contrasena"
+        ]
+      }
+    }
+  }
+}
